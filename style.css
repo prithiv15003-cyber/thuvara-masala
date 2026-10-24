@@ -1,208 +1,639 @@
 
-/* ===== GLOBAL STYLES ===== */
+/* ==========================================
+   THUVARA MASALA — COMPLETE STYLESHEET
+   Light Premium | Responsive | Tamil + English
+   ========================================== */
+
+/* ===== 1. COLOUR SYSTEM & GLOBAL STYLES ===== */
+
+:root {
+  --page-bg: #FAF7F0;
+  --white: #FFFFFF;
+  --cream: #F3EDE2;
+  --brand: #75432F;
+  --brand-dark: #593020;
+  --gold: #B08A4A;
+  --text: #46352C;
+  --muted: #716258;
+  --border: #E7DDCE;
+  --shadow: 0 5px 20px rgba(70, 53, 44, 0.07);
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+  min-height: 100%;
+  background: var(--page-bg);
 }
 
 body {
-  margin: 0;
   width: 100%;
-  font-family: Arial, sans-serif;
-  color: #26372b;
-  background: #183d2b;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0;
   overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  background: var(--page-bg);
+  line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  overflow-wrap: anywhere;
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+main {
   width: 100%;
-  padding: 20px 5%;
-  background: #183d2b;
-  color: white;
-  flex-wrap: wrap;
-  gap: 16px;
 }
 
-header h2 {
-  margin: 0;
+section {
+  scroll-margin-top: 20px;
 }
 
-nav {
+/* ===== 2. HEADER & BRAND ===== */
+
+.site-header {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 20px;
+  width: 100%;
+  padding: 18px 5%;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(70, 53, 44, 0.04);
 }
 
-nav a {
-  color: white;
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--brand);
   text-decoration: none;
 }
 
-nav a:hover {
-  color: #e8c18c;
+.brand-name {
+  color: var(--brand);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+  line-height: 1.4;
 }
 
-/* ===== BUTTONS ===== */
+.brand-english {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.site-header nav a {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-header nav a:hover {
+  color: var(--gold);
+}
+
+/* ===== 3. BUTTONS ===== */
+
 .button {
-  display: inline-block;
-  padding: 14px 24px;
-  background: #b87932;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 13px 22px;
+  background: var(--brand);
+  color: var(--white);
+  border: 1px solid var(--brand);
+  border-radius: 8px;
   text-align: center;
-  transition: background 0.2s ease;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .button:hover {
-  background: #925b22;
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: var(--white);
 }
 
-/* ===== HERO SECTION ===== */
+.button:focus-visible,
+a:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ===== 4. HERO SECTION ===== */
+
 .hero {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 100px 5%;
-  text-align: center;
-  background: #e8eedc;
-}
-
-.hero > p {
-  color: #354d3b;
-}
-
-.hero h1 {
-  margin: 20px auto;
-  max-width: 1000px;
-  font-size: clamp(36px, 5vw, 64px);
-  line-height: 1.15;
-  color: #183d2b;
-}
-
-.hero .button {
-  margin-top: 20px;
-}
-
-/* ===== PRODUCTS, ABOUT & CONTACT ===== */
-#products,
-#about,
-#contact {
-  display: block;
-  width: 100%;
-  max-width: none;
-  padding: 55px 5%;
-  text-align: center;
-}
-
-#products h2,
-#about h2,
-#contact h2 {
-  color: white;
-}
-
-#products > p {
-  margin-bottom: 28px;
-  color: white;
-}
-
-/* ===== PRODUCT GRID ===== */
-.products {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  width: 100%;
-  max-width: 1500px;
-  margin: 30px auto 0;
-  align-items: stretch;
-}
-
-/* ===== PRODUCT CARDS ===== */
-.product-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  min-width: 0;
-  padding: 24px;
-  gap: 12px;
-  background: #ffffff;
-  border: 1px solid #e3e2d7;
-  border-radius: 14px;
+  min-height: 390px;
+  padding: 75px 5%;
+  background: var(--page-bg);
   text-align: center;
-  color: #26372b;
 }
 
-.product-card img {
-  display: block;
+.hero-eyebrow {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
   width: 100%;
-  height: 200px;
-  object-fit: contain;
-  border-radius: 8px;
+  max-width: 1000px;
+  margin: 10px auto 18px;
+  color: var(--brand);
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 800;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
-.product-card h3 {
-  margin: 8px 0;
-  font-size: 20px;
+.hero h1 span {
+  display: inline-block;
+  margin-top: 12px;
+  color: #916A45;
+  font-size: clamp(19px, 2.5vw, 27px);
+  font-weight: 500;
+  line-height: 1.5;
 }
 
-.product-card p {
-  margin: 4px 0;
+.hero-description {
+  max-width: 700px;
+  margin: 8px auto;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.hero-tamil {
+  max-width: 700px;
+  margin: 4px auto 18px;
+  color: var(--muted);
   font-size: 15px;
+  line-height: 1.8;
 }
 
-.product-card strong {
-  color: #183d2b;
-  font-size: 21px;
+/* ===== 5. PRODUCT SECTION ===== */
+
+.products-section {
+  width: 100%;
+  padding: 50px 5%;
+  background: var(--page-bg);
 }
 
-.product-card .button {
-  margin-top: 10px;
-  font-size: 14px;
+.section-heading {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  text-align: center;
 }
 
-/* ===== ABOUT & CONTACT TEXT ===== */
-#about p,
-#contact p {
-  color: white;
+.section-eyebrow {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.section-heading h2,
+.about-section h2,
+.contact-section h2 {
+  margin: 0 0 12px;
+  color: var(--brand);
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.35;
+}
+
+.section-heading > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
   line-height: 1.7;
 }
 
-/* ===== FOOTER ===== */
+/* ===== 6. PRODUCT GRID ===== */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 28px auto 0;
+}
+
+/* ===== 7. PRODUCT CARDS ===== */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+  gap: 0;
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(70, 53, 44, 0.12);
+}
+
+/* Product image area */
+
+.product-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 230px;
+  padding: 18px;
+  background: var(--white);
+  border-bottom: 1px solid #F0E8DC;
+}
+
+.product-card .product-image-wrap img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 210px;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Product information */
+
+.product-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  padding: 22px;
+  gap: 10px;
+}
+
+.product-tamil-name {
+  margin: 0;
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.product-info h3 {
+  margin: 0;
+  color: var(--brand);
+  font-size: 23px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.product-description {
+  min-height: 44px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* Pack-size selector */
+
+.weight-label {
+  display: block;
+  margin-top: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.weight-select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 10px 12px;
+  color: var(--text);
+  background: var(--page-bg);
+  border: 1px solid #DCCDB9;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.weight-select:hover {
+  border-color: var(--gold);
+}
+
+/* Dynamic price */
+
+.product-price {
+  margin: 6px 0;
+  color: var(--brand);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+/* WhatsApp product button */
+
+.product-order-button {
+  width: 100%;
+  margin-top: auto;
+  padding: 13px 12px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Price note */
+
+.price-note {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ===== 8. ABOUT SECTION ===== */
+
+.about-section {
+  width: 100%;
+  padding: 50px 5%;
+  background: var(--cream);
+  text-align: center;
+}
+
+.about-section .section-eyebrow {
+  margin-bottom: 10px;
+}
+
+.about-section h2 {
+  margin-top: 0;
+}
+
+.about-section > p:not(.section-eyebrow) {
+  max-width: 760px;
+  margin: 12px auto;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ===== 9. CONTACT SECTION ===== */
+
+.contact-section {
+  width: 100%;
+  padding: 50px 5%;
+  background: var(--page-bg);
+  text-align: center;
+}
+
+.contact-eyebrow {
+  margin: 0 0 10px;
+}
+
+.contact-section h2 {
+  margin-bottom: 12px;
+}
+
+.contact-intro,
+.contact-tamil {
+  max-width: 760px;
+  margin: 8px auto;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Contact cards */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 32px auto;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 24px 18px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(70, 53, 44, 0.04);
+  overflow-wrap: anywhere;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 10px;
+  color: var(--brand);
+  background: var(--cream);
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.contact-card h3 {
+  margin: 8px 0;
+  color: var(--brand);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.contact-card p {
+  margin: 6px 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.contact-card a {
+  max-width: 100%;
+  color: var(--brand);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.contact-card a:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+/* ===== 10. GOOGLE MAP ===== */
+
+.map-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 30px auto;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 350px;
+  border: 0;
+}
+
+.contact-whatsapp {
+  margin-top: 12px;
+}
+
+/* ===== 11. FOOTER ===== */
+
 footer {
   width: 100%;
   padding: 24px 5%;
+  color: var(--text);
+  background: #EDE4D7;
+  border-top: 1px solid var(--border);
   text-align: center;
-  background: #102e20;
-  color: white;
+  font-size: 14px;
 }
 
-/* ===== TABLETS & MOBILE ===== */
+/* ===== 12. TABLET RESPONSIVENESS ===== */
+
+@media (max-width: 900px) {
+  .site-header {
+    padding: 18px 4%;
+  }
+
+  .site-header nav {
+    gap: 15px;
+  }
+
+  .products {
+    gap: 16px;
+  }
+
+  .product-info {
+    padding: 18px 14px;
+  }
+
+  .product-info h3 {
+    font-size: 20px;
+  }
+
+  .contact-grid {
+    gap: 12px;
+  }
+}
+
+/* ===== 13. MOBILE RESPONSIVENESS ===== */
+
 @media (max-width: 700px) {
-  header {
+  .site-header {
+    flex-direction: column;
     justify-content: center;
+    gap: 14px;
+    padding: 20px 5%;
     text-align: center;
   }
 
-  nav {
+  .brand {
+    align-items: center;
+  }
+
+  .site-header nav {
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+
+  .site-header nav a {
+    font-size: 14px;
   }
 
   .hero {
-    padding: 70px 6%;
+    min-height: 330px;
+    padding: 50px 6%;
   }
 
-  #products,
-  #about,
-  #contact {
-    padding: 40px 6%;
+  .hero h1 {
+    font-size: clamp(30px, 6vw, 42px);
+  }
+
+  .hero-description,
+  .hero-tamil {
+    font-size: 14px;
+  }
+
+  .products-section,
+  .about-section,
+  .contact-section {
+    padding: 38px 6%;
   }
 
   .products {
@@ -210,244 +641,326 @@ footer {
     gap: 16px;
   }
 
-  .product-card {
-    padding: 16px 12px;
+  .product-image-wrap {
+    min-height: 170px;
+    padding: 12px;
   }
 
-  .product-card img {
+  .product-card .product-image-wrap img {
     height: 150px;
   }
-}
 
-/* ===== SMALL PHONES ===== */
-@media (max-width: 480px) {
-  .products {
+  .product-info {
+    padding: 16px 12px;
+    gap: 9px;
+  }
+
+  .product-tamil-name {
+    font-size: 16px;
+  }
+
+  .product-info h3 {
+    font-size: 18px;
+  }
+
+  .product-description {
+    min-height: 0;
+    font-size: 13px;
+  }
+
+  .product-price {
+    font-size: 25px;
+  }
+
+  .product-order-button {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
+
+  .contact-grid {
     grid-template-columns: 1fr;
-  }
-
-  .product-card img {
-    height: 190px;
-  }
-
-  .hero h1 {
-    font-size: 36px;
-  }
-}
-
-/* ===== THUVARA MASALA BRAND HEADER ===== */
-
-.site-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 20px 5%;
-  background: #173b2a;
-  color: #fffdf5;
-  border-bottom: 3px solid #c69a53;
-}
-
-.brand {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  color: #fffdf5;
-  text-decoration: none;
-}
-
-.brand-name {
-  font-size: clamp(24px, 3vw, 34px);
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.brand-english {
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: #e5c58d;
-}
-
-.site-header nav {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.site-header nav a {
-  color: #fffdf5;
-  text-decoration: none;
-  font-size: 15px;
-  transition: color 0.2s ease;
-}
-
-.site-header nav a:hover {
-  color: #e5c58d;
-}
-
-/* ===== PREMIUM HERO BANNER ===== */
-
-.hero {
-  width: 100%;
-  min-height: 420px;
-  padding: 85px 6%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at top, #f8edcf 0%, transparent 65%),
-    linear-gradient(135deg, #f5edda, #e3e9d6);
-  color: #26372b;
-}
-
-.hero .hero-eyebrow {
-  color: #94652c;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
-}
-
-.hero h1 {
-  max-width: 1000px;
-  margin: 12px auto;
-  color: #173b2a;
-  font-size: clamp(34px, 5vw, 62px);
-  line-height: 1.3;
-}
-
-.hero h1 span {
-  display: block;
-  margin-top: 12px;
-  font-size: clamp(19px, 2.5vw, 27px);
-  font-weight: 500;
-  color: #77502b;
-  line-height: 1.5;
-}
-
-.hero .hero-description {
-  max-width: 650px;
-  margin: 18px auto 4px;
-  color: #435447;
-  font-size: 17px;
-  line-height: 1.8;
-}
-
-.hero .hero-tamil {
-  color: #435447;
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-.hero .button {
-  margin-top: 22px;
-  background: #a86d2c;
-  padding: 15px 25px;
-  font-weight: 600;
-  border-radius: 8px;
-}
-
-.hero .button:hover {
-  background: #815021;
-}
-
-/* ===== RESPONSIVE HEADER & BANNER ===== */
-
-@media (max-width: 700px) {
-  .site-header {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px 4%;
-  }
-
-  .site-header nav {
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 14px;
   }
 
-  .site-header nav a {
-    margin: 0;
-    font-size: 14px;
+  .contact-card {
+    padding: 22px 18px;
+  }
+
+  .map-container iframe {
+    height: 300px;
+  }
+}
+
+/* ===== 14. SMALL PHONES ===== */
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 27px;
+  }
+
+  .brand-english {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .site-header nav {
+    gap: 10px 14px;
   }
 
   .hero {
-    min-height: 360px;
-    padding: 60px 6%;
+    min-height: 0;
+    padding: 45px 6%;
   }
 
-  .hero .hero-eyebrow {
-    letter-spacing: 2px;
+  .hero h1 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .hero h1 span {
+    font-size: 19px;
+  }
+
+  .hero .button {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 14px;
+  }
+
+  .section-heading h2,
+  .about-section h2,
+  .contact-section h2 {
+    font-size: 26px;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .product-image-wrap {
+    min-height: 220px;
+    padding: 16px;
+  }
+
+  .product-card .product-image-wrap img {
+    height: 190px;
+  }
+
+  .product-info {
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .product-tamil-name {
+    font-size: 18px;
+  }
+
+  .product-info h3 {
+    font-size: 22px;
+  }
+
+  .product-description {
+    font-size: 14px;
+  }
+
+  .weight-select {
+    min-height: 46px;
+  }
+
+  .product-order-button {
+    padding: 13px 12px;
+    font-size: 14px;
+  }
+
+  .map-container iframe {
+    height: 260px;
+  }
+
+  footer {
+    padding: 20px 6%;
+    font-size: 13px;
   }
 }
 
-/* ===== MAKE PRODUCT NAMES STAND OUT ===== */
+/* ===== 15. REDUCED MOTION ACCESSIBILITY ===== */
 
-.product-card h3 {
-  font-size: clamp(24px, 2.2vw, 32px);
-  font-weight: 800;
-  line-height: 1.25;
-  color: #a6531b;
-  margin: 18px 0 12px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .product-card:hover {
+    transform: none;
+  }
+}
+
+/* LIMITED-TIME 10% OFFER */
+
+.offer-announcement {
+  margin: 14px auto 0;
+  padding: 10px 16px;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid #d8bd86;
+  border-radius: 30px;
+  background: #fff4dc;
+  color: #75432f;
+  font-weight: 700;
   text-align: center;
-  letter-spacing: 0.3px;
 }
 
-/* Different rich colours for each product */
-.product-card:nth-child(1) h3 {
-  color: #a6531b; /* Groundnut oil - warm brown */
+.product-image-wrap {
+  position: relative;
 }
 
-.product-card:nth-child(2) h3 {
-  color: #b52d24; /* Chilli powder - deep red */
-}
-
-.product-card:nth-child(3) h3 {
-  color: #b8860b; /* Turmeric powder - golden yellow */
-}
-
-/* Make product prices prominent too */
-.product-card strong {
-  font-size: 26px;
+.offer-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #75432f;
+  color: #fff8e9;
+  font-size: 12px;
   font-weight: 800;
-  color: #183d2b;
-  margin: 8px 0;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 12%);
 }
 
-/* Give product cards more breathing room */
-.product-card {
-  padding: 28px 20px;
-  gap: 14px;
-  border-top: 5px solid #c69a53;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.product-original-price {
+  display: inline-block;
+  margin-right: 9px;
+  color: #81786f;
+  font-size: 0.9em;
+  text-decoration: line-through;
 }
 
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+.product-original-price[hidden] {
+  display: none;
 }
 
-.contact-card a {
-  overflow-wrap: anywhere;
-  line-height: 1.7;
+@media (max-width: 480px) {
+  .offer-announcement {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+
+  .offer-badge {
+    top: 8px;
+    left: 8px;
+    padding: 7px 9px;
+    font-size: 11px;
+  }
 }
 
-.contact-card p {
-  overflow-wrap: anywhere;
+/* ABOUT THUVARA MASALA */
+
+.about-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #eee4d6;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(70, 45, 25, 0.06);
 }
 
-.contact-card h3 {
-  line-height: 1.4;
+.about-content > h3 {
+  color: #75432f;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
 }
 
-.map-container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 35px auto 0;
-  overflow: hidden;
-  border-radius: 14px;
-  border: 1px solid #d9c9a9;
+.about-content > p {
+  color: #5e554d;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.about-highlight {
+  padding: 20px 14px;
+  text-align: center;
+  background: #faf7f0;
+  border-radius: 12px;
+}
+
+.about-icon {
+  display: inline-block;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.about-highlight h4 {
+  color: #75432f;
+  margin-bottom: 8px;
+}
+
+.about-highlight p {
+  color: #655b52;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.fssai-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+  padding: 16px;
+  border: 1px solid #d9c49b;
+  border-radius: 10px;
+  background: #fff8e9;
+  color: #75432f;
+}
+
+.fssai-label {
+  font-weight: 500;
+}
+
+.fssai-details strong {
+  letter-spacing: 0.5px;
+}
+
+.footer-business-details {
+  text-align: center;
+  line-height: 1.8;
+  padding: 16px 12px;
+}
+
+.footer-business-details p {
+  margin: 4px 0;
+}
+
+@media (max-width: 600px) {
+  .about-content {
+    padding: 20px 16px;
+  }
+
+  .about-highlights {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .fssai-details {
+    flex-direction: column;
+    text-align: center;
+  }
 }
